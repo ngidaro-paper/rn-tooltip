@@ -1,12 +1,12 @@
 //  @flow
 
 import * as React from 'react';
-import { TouchableOpacity, Modal, View, I18nManager } from 'react-native';
+import { TouchableOpacity, Modal, View, I18nManager, Dimensions } from 'react-native';
 import { ViewPropTypes as RNViewPropTypes } from 'deprecated-react-native-prop-types';
 import PropTypes from 'prop-types';
 
 import Triangle from './Triangle';
-import { ScreenWidth, ScreenHeight, isIOS } from './helpers';
+import { isIOS } from './helpers';
 import getTooltipCoordinate from './getTooltipCoordinate';
 
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
@@ -89,6 +89,7 @@ class Tooltip extends React.Component<Props, State> {
   };
 
   getTooltipStyle = () => {
+    const {width: ScreenWidth, height: ScreenHeight} = Dimensions.get('window');
     const { yOffset, xOffset, elementHeight, elementWidth } = this.state;
     const {
       height,
